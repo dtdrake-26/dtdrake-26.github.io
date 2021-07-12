@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<script>
+    //Dylan Drake 
+</script>
+<!--Author:Dylan Drake
+email dyldrake@uat.edu
+week 1 assignment,Launching your UAT Space Program HTML Document Tags -->
+<html>
+
+<head>
+    <script src="code.js"> </script>
+        <script src="class.js"> </script>
+        <script src="dataLoader.js"> </script> 
+
+    <link rel="stylesheet" href="style CSS.css">
+
+    <title>
+        Dylan Drake UAT Space page
+    </title>
+<script>
+    // creating the variables we need 
+    var theTime = new Date();
+    var tempTime = new Date();
+    var time_interval = 5000;
+    var last_iteration = 0; 
+    var running = true;
+    var index = 0;
+    var timer; 
+
+    // gets data into the array 
+    var data = getdata();
+    
+    // function to load and display data 
+    function unpdateDisplay() {
+        theTime = new Date();
+        var timeRead = data[index].Time_Seconds; 
+
+        if(timeRead >= 10){
+            document.getElementById("data").rows["seconds"].innerHTML = dataRow("Time Elasped", data[index].Time_Seconds, "seconds");
+            document.getElementById("data").rows["latitude"].innerHTML = dataRow("latitude", data[index].Latitude, " ");
+            document.getElementById("data").rows["longitude"].innerHTML = dataRow("longitude", data[index].Longitude, " ");
+            document.getElementById("data").rows["Gpssensor_Altitude"].innerHTML = dataRow("Gpssensor_Altitude", data[index].GPS_altitute, " ");
+            document.getElementById("data").rows["Bmpsensor-altittude"].innerHTML = dataRow("Bmpsensor-altittude", data[index].BMPSensor_Altittude, " ");
+            document.getElementById("data").rows["Bmpsensor_ pressor"].innerHTML = dataRow("Bmpsensor_ pressor", data[index].BMPSensor_presure, " ");
+            document.getElementById("data").rows["bmpsensor_tmep"].innerHTML = dataRow("bmpsensor_tmep", data[index].BMPSensor_temp, " ");
+            document.getElementById("data").rows["digsensor_altittude"].innerHTML = dataRow("digsensor_altittude", data[index].DIGSensor_temp, " ");
+            document.getElementById("data").rows["csssensor_altittude"].innerHTML = dataRow("csssensor_altittude", data[index].CSSSensor_temp, " ");
+            document.getElementById("data").rows["csssensor_eCO2"].innerHTML = dataRow("csssensor_eCO2", data[index].CSSSensor_eCO2, " ");
+            document.getElementById("data").rows["csssensor_TVOC"].innerHTML = dataRow("csssensor_TVOC", data[index].CSSSensor_tVOC, " ");
+            document.getElementById("data").rows["UV"].innerHTML = dataRow("UV", data[index].UV, " ");
+            document.getElementById("data").rows["accelx"].innerHTML = dataRow("accelx", data[index].Accelx, " ");
+            document.getElementById("data").rows["accely"].innerHTML = dataRow("accely", data[index].Accely, " ");
+            document.getElementById("data").rows["accelz"].innerHTML = dataRow("accelz", data[index].Accelz, " ");
+            document.getElementById("data").rows["magneticx"].innerHTML = dataRow("magneticx", data[index].magnetx, " ");
+            document.getElementById("data").rows["magneticy"].innerHTML = dataRow("magneticy", data[index].magnety, " ");
+            document.getElementById("data").rows["magneticz"].innerHTML = dataRow("magneticz", data[index].magnetz, " ");
+            document.getElementById("data").rows["gyrox"].innerHTML = dataRow("gyrox", data[index].gyrox, " ");
+            document.getElementById("data").rows["gyroy"].innerHTML = dataRow("gyroy", data[index].gyroy, " ");
+            document.getElementById("data").rows["gyroz"].innerHTML = dataRow("gyroz", data[index].gyroz, " ");
+            if(index < 500){
+                index++;
+            }else{
+                index = 0;
+            }
+            console.log ("display: " + theTime.getHours() + ":" + theTime.getMinutes() + ":" + theTime.getSeconds());
+            
+
+            
+            
+
+        }
+
+    }
+</script>
+
+    
+</head>
+
+
+<body>
+    <table>
+        <td><img src="UATspacelogo-1.jpg"></td>
+        <td> <h1>
+            UAT Space Program
+        </h1></td>
+    </table>
+    <br>
+    <table id="data" width="70%" border="2">
+        <col style="width: 35%"> 
+        <col style="width: 35%">
+        <thead>
+            <tr style="font-family: fantasy;"></tr>
+            <th>Data Type</th>
+            <th>Readings</th>
+        </thead>
+        <tbody>
+            <tr id="seconds"></tr>
+            <tr id="latitude"></tr>
+            <tr id="longitude"></tr>
+            <tr id="Gpssensor_Altitude"></tr>
+            <tr id="Bmpsensor-altittude"></tr>
+            <tr id="Bmpsensor_ pressor"></tr>
+            <tr id="bmpsensor_tmep"></tr>
+            <tr id="digsensor_altittude"></tr>
+            <tr id="csssensor_altittude"></tr>
+            <tr id="csssensor_eCO2"></tr>
+            <tr id="csssensor_TVOC"></tr>
+            <tr id="UV"></tr>
+            <tr id="accelx"></tr>
+            <tr id="accely"></tr>
+            <tr id="accelz"></tr>
+            <tr id="magneticx"></tr>
+            <tr id="magneticy"></tr>
+            <tr id="magneticz"></tr>
+            <tr id="gyrox"></tr>
+            <tr id="gyroy"></tr>
+            <tr id="gyroz"></tr>
+        </tbody>
+    </table>
+    <br>
+    The current time Is: <div id="time"></div>
+  
+    
+    
+    <br>
+
+    <button id="startButton" onclick="start();" class="button">Start</button>
+    <button id= "stopButton" onclick="stop();"class="button">Stop</button>
+    <br>
+    <br>
+    <div Id="die1res">Die 1 Status</div>
+    <div Id="die2res">Die 2 Status</div>
+    <div Id="diceSum">Dice Sum Status</div>
+    <div Id="CrapsStatus"> Craps Game Status</div>
+    <br>
+    <button onclick="playCraps()" class="button">Play Craps</button>
+<br>
+<br>
+<button class="button" onclick= "playstation()";>Play sound </button>
+<button class="button" onclick= "playnewSound()";>Play Ben </button>
+<br>
+<br>
+  
+<script>
+   var fallaunch = new Mission( 100, 100, 100, "Fiona", 15, "October", 2022, 5);
+   var springlaunch = new Mission ( 79, 50, 92, "Polaris", 12, "April", 2023, 2);
+</script>
+    
+    <button class = "button" onclick="launchFall();">launch fall</button>
+    <button class = "button" onclick="displayFall();">display fall</button>
+    <br>
+    <br>
+    <button class="lgbutton"onclick="goLandingPage()">Goto index.html</button>
+    <br>
+    <br>
+    <button class="lgbutton" onclick="goBoards();">Go to Boards</button>
+</body>
+
+
+<body>
+
+</body>
+
+</html>
+
+
+
+
+</html>
