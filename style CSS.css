@@ -16,7 +16,7 @@ background-image: linear-gradient(90deg,white,#2eacd4);
 .lgButton{
     background-color: whitesmoke;
     width: 100px;
-    height:  30px;
+    height:  40px;
     border-radius: 12px; 
     border-color: red;
 }
